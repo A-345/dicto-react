@@ -7,8 +7,16 @@ class SearchBox extends React.Component {
     {
         super();
         this.state = {
-            buttonClicked : false
+            buttonClicked : false , 
+            name : ""
         }
+    }
+    onChangeHandler = (e)=>{
+        var value = e.target.value;
+        this.setState({
+            buttonClicked : false , 
+            name : value
+        })
     }
 
     onClickHandler = ()=>
@@ -20,9 +28,11 @@ class SearchBox extends React.Component {
 
         this.setState(prevState => {
             return {
-                buttonClicked : !prevState.buttonClicked
+                buttonClicked : prevState.buttonClicked,
+                name : prevState.name
             }
         })
+        this.props.getWord(this.state.name);
     }
     render() {
         return (
@@ -34,7 +44,7 @@ class SearchBox extends React.Component {
                 <div className="searchbar">
                     <div className="logo">&nbsp; Dictionary</div>
                     <div className="input-bar">
-                        <input type="text" placeholder="&nbsp; Search Phase or Word"></input>
+                        <input type="text" value={this.state.name} onChange={this.onChangeHandler} placeholder="&nbsp; Search Phase or Word"></input>
                     </div>
                     <div className="search-symbol" onClick={this.onClickHandler}>
                         <span className="fa fa-search"></span>
