@@ -1,0 +1,30 @@
+.container {
+  margin : 0 auto;
+    width : 600px;
+    height : 600px;
+    text-align : center;
+}
+.header-card
+{
+    width : 100%;
+    display : grid;
+    grid-template-columns: auto auto ;
+}
+.option-container 
+{
+      height : 25px;
+
+}
+.property
+{
+    background : rgb(2, 2, 32);
+    color : white;
+      padding: 20px;
+}
+.output 
+{
+    grid-row : 2;
+    grid-column : 1 / span 2;
+    overflow-y: scroll;
+    height : 80vh;
+}

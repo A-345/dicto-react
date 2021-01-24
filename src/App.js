@@ -12,7 +12,7 @@ class  App extends React.Component
         super();
         this.state = {
             fetchSuccessful  : false,
-            category : ""
+            category : ["noun" , "verb"]
         }
     }
 
@@ -44,13 +44,13 @@ class  App extends React.Component
                         if(body)
                         {
                             let parsed = JSON.parse(body);
+                            console.log(parsed);
             
                           var output = parsed.results[0].lexicalEntries  // axact address 
             
                           var attribute = output.map((innerObject)=>{
                             return innerObject.lexicalCategory.id;
                           })
-                          console.log(output)
                             this.setState({
                                 fetchSuccessful : true,
                                 category : attribute
@@ -59,15 +59,18 @@ class  App extends React.Component
                     });
                 });
     }
-
-    // componentDidMount() {
-    //     this.getData();
-    // }
+    
+    componentDidMount() {
+        this.getData();
+    }
     render(){
+        console.log(this.state.fetchSuccessful);
+        console.log(this.state.category);
         return (
             <div className="App">
                 <SearchBox />
-                {this.fetchSuccessful ? <RenderDefinition category={this.state.fetchSuccess} /> : ""}
+                {/* {this.state.fetchSuccessful ? <RenderDefinition category={this.state.category} /> : ""} */}
+                 <RenderDefinition category={this.state.category} />
             </div>
         );
 }

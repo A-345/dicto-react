@@ -1,5 +1,6 @@
 import React from 'react';
-import './SearchBox.css'
+import './SearchBox.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 class SearchBox extends React.Component {
     constructor()
