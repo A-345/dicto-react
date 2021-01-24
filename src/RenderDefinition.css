@@ -2,7 +2,6 @@
   margin : 0 auto;
     width : 600px;
     height : 600px;
-    text-align : center;
 }
 .header-card
 {
@@ -33,4 +32,23 @@
 {
   /* border-bottom: 5px solid magenta; */
   border-bottom: 5px solid  magenta;
+}
+.word 
+{
+  margin-left: 10px;
+  text-align : left;
+  font-size: 15px;
+}
+.main {
+  font-weight: bolder;
+  margin-left: 10px;
+}
+.nomain
+{
+  font-weight: normal;
+  margin-left: 16px;
+}
+.less-imp
+{
+  margin-left : 7px;
 }

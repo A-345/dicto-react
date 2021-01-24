@@ -15,12 +15,14 @@ class App extends React.Component {
             searchFor: "",
              firstValue: [] , secondValue : []
         }
+        this.word = ""
     }
 
     getWord = (word)=> {
         this.setState(
            {fetchSuccessful: "", category: "", searchFor: word , firstValue:[] , secondValue:[]})
         this.getData(word);
+        this.word = word;
     }
 
     getData(word) {
@@ -73,7 +75,7 @@ class App extends React.Component {
         console.log(this.firstAttribute);
         return (<div className="App">
             <SearchBox getWord={this.getWord}/> 
-            {this.state.fetchSuccessful ? <RenderDefinition category={this.state.category} firstData = {this.state.firstValue} secondData={this.state.secondValue}/> : ""} 
+            {this.state.fetchSuccessful ? <RenderDefinition word = {this.word} category={this.state.category} firstData = {this.state.firstValue} secondData={this.state.secondValue}/> : ""} 
             </div>);
     }
 }

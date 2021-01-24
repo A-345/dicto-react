@@ -16,19 +16,19 @@ function RenderDefinition(props) {
                             index ++
                             index2 = 1
                         if (!description.subsenses) 
-                            return (<li> <p className='space' key={description.id}> {description.definitions}</p></li>)
+                            return (<li> <p className='space main' key={description.id}> {description.definitions}</p></li>)
                             else 
-                                return (<li> <p key={description.id}> {description.definitions}
+                                return (<li> <p key={description.id} className="main" > {description.definitions}
                                     {
                                     description.subsenses.map((defination) => {
                                             index2 ++
-                                        return <p className='helping-text space'> {
+                                        return <p className='helping-text space nomain'> {
                                             index - 1
                                         }.{
                                             index2 - 1
                                         }
                                             {
-                                            defination.definitions[0]
+                                            <span className="less-imp">{defination.definitions[0]}</span>
                                         }</p>
                                 })
                                 }</p> </li>)
@@ -64,9 +64,11 @@ function RenderDefinition(props) {
         return null;        
     })
 
-    return (<div className="container">
+    return (
+    <div className="container">
         <div className="header-card"> {card}
             <div className="output">
+            <p className="word">{props.word}</p>
             {
                 optionSelected === props.category[0] ? renderData(props.firstData , "noun2") : renderData(props.secondData , "verb2")
             }
