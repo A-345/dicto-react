@@ -20,6 +20,7 @@
     background : rgb(2, 2, 32);
     color : white;
       padding: 20px;
+      text-transform: capitalize;
 }
 .output 
 {
@@ -27,4 +28,9 @@
     grid-column : 1 / span 2;
     overflow-y: scroll;
     height : 80vh;
+}
+.selected
+{
+  /* border-bottom: 5px solid magenta; */
+  border-bottom: 5px solid  magenta;
 }

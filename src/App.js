@@ -12,13 +12,14 @@ class App extends React.Component {
             fetchSuccessful: false,
             category: [
             ],
-            searchFor: ""
+            searchFor: "",
+             firstValue: [] , secondValue : []
         }
     }
 
     getWord = (word)=> {
         this.setState(
-           {fetchSuccessful: "", category: "", searchFor: word})
+           {fetchSuccessful: "", category: "", searchFor: word , firstValue:[] , secondValue:[]})
         this.getData(word);
     }
 
@@ -55,8 +56,12 @@ class App extends React.Component {
                         var attribute = output.map((innerObject) => {
                             return innerObject.lexicalCategory.id;
                         })
+                        var firstAttribute = output[0].entries[0].senses;
+                        var secondAttribute = output[1].entries[0].senses;
+                        console.log(firstAttribute)
+                        console.log(secondAttribute);
                         this.setState((prevState) => {
-                            return({fetchSuccessful: true, category: attribute, searchFor: prevState.searchFor})
+                            return({fetchSuccessful: true, category: attribute, searchFor: prevState.searchFor , firstValue: firstAttribute , secondValue : secondAttribute })
                         })
                     }
                 });
@@ -64,17 +69,12 @@ class App extends React.Component {
         }
     }
 
-    componentDidMount() {
-    }
     render() {
+        console.log(this.firstAttribute);
         return (<div className="App">
-            <SearchBox getWord={
-                this.getWord
-            }/> {
-            this.state.fetchSuccessful ? <RenderDefinition category={
-                this.state.category
-            }/> : ""
-        } </div>);
+            <SearchBox getWord={this.getWord}/> 
+            {this.state.fetchSuccessful ? <RenderDefinition category={this.state.category} firstData = {this.state.firstValue} secondData={this.state.secondValue}/> : ""} 
+            </div>);
     }
 }
 
